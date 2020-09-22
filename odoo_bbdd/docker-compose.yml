@@ -3,6 +3,7 @@ services:
 #Service odoo toma el Dockerfile de ./odoo
  odoo:
   build: ./odoo
+  hostname: odoo
   ports:
   - "8069:8069"
   - "5432:5432"
