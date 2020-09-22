@@ -6,8 +6,8 @@ services:
   ports:
   - "8069:8069"
   - "5432:5432"
-  #Cambiarlo para el home de cada usuario
+  #Mapeo del directorio de la MV en el container
   volumes:
-  - /home/javierfp/odoo:/opt/odoo/src
-  - /home/javierfp/odoo/conf:/opt/odoo/conf
-  - /home/javierfp/odoo/log:/var/log/odoo
+  - /root/odoo:/opt/odoo/src
+  - /root/odoo/conf:/opt/odoo/conf
+  - /root/odoo/log:/var/log/odoo
