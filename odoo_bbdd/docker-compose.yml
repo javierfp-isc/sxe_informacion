@@ -9,6 +9,6 @@ services:
   - "5432:5432"
   #Mapeo del directorio de la MV en el container
   volumes:
-  - /root/odoo:/opt/odoo/src
+  - /root/odoo/src:/opt/odoo/src
   - /root/odoo/conf:/opt/odoo/conf
   - /root/odoo/log:/var/log/odoo
