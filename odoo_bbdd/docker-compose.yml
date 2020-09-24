@@ -12,3 +12,4 @@ services:
   - /root/odoo/src:/opt/odoo/src
   - /root/odoo/conf:/opt/odoo/conf
   - /root/odoo/log:/var/log/odoo
+  - /root/odoo/backups:/opt/odoo/backups
