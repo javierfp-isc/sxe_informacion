@@ -35,7 +35,7 @@ RUN set -x; \
 	useradd -m -d /opt/$ODOOUSER -U -s /bin/bash $ODOOUSER && echo "$ODOOUSER:$ODOOPASS" | chpasswd
 
 #Copiamos el odoo.conf al container
-COPY odoo.conf /opt/$ODOOUSER/odoo.conf
+COPY odoo.conf /opt/$ODOOUSER/conf/odoo.conf
 
 #Instalamos paquetes de utilidades
 RUN set -x; \
