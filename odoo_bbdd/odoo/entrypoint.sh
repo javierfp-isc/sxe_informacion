@@ -4,9 +4,6 @@
 service ssh start
 service postgresql start
 
-#Movemos el archivo de configuración para que sea accesible desde el anfitrión
-mv /opt/odoo/odoo.conf /opt/odoo/conf/odoo.conf
-
 #Creamos el archivo de log y cambiamos propietario
 touch /var/log/odoo/odoo.log
 chown odoo /var/log/odoo/odoo.log
