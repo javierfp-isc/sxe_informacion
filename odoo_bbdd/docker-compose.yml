@@ -10,4 +10,3 @@ services:
   #Mapeo del directorio de la MV en el container
   volumes:
   - /root/odoo/src:/opt/odoo/src
-  - /root/odoo/backups:/opt/odoo/backups
