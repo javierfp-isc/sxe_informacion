@@ -18,10 +18,13 @@ COPY entrypoint.sh /usr/bin/entrypoint.sh
 #Copiamos el script de odoo
 COPY odoo.sh /etc/init.d/odoo.sh
 
-#Damos permiso de ejecución a los scripts (set -x muestra la salida de todos los comandos)
+#Activamos el script (set -x muestra la salida de todos los comandos)
 RUN set -x; \  
-	chmod +x /etc/init.d/odoo.sh && \
-	chmod +x /usr/bin/entrypoint.sh	
+	chmod +x /etc/init.d/odoo.sh
+
+#Damos permiso al entrypoint
+RUN set -x; \
+	chmod +x /usr/bin/entrypoint.sh
 
 #Establecemos la password de root
 RUN set -x; \
@@ -30,11 +33,6 @@ RUN set -x; \
 #Crea el usuario para odoo
 RUN set -x; \
 	useradd -m -d /opt/$ODOOUSER -U -s /bin/bash $ODOOUSER && echo "$ODOOUSER:$ODOOPASS" | chpasswd
-
-#Crea directorio para fuentes de odoo
-RUN set -x; \
-	mkdir /opt/$ODOOUSER/src && \
-	chown $ODOOUSER /opt/$ODOOUSER/src
 
 #Copiamos el odoo.conf al container
 COPY odoo.conf /opt/$ODOOUSER/odoo.conf
@@ -49,9 +47,9 @@ RUN set -x; \
 
 #Instalamos paquetes de base para odoo
 RUN set -x; \
-	apt install -y python3 virtualenv build-essential python3-dev python3-pip libxslt-dev libsasl2-dev libssl-dev libldap2-dev libzip-dev
+	apt install -y python3 postgresql virtualenv build-essential python3-dev python3-pip libxslt-dev libsasl2-dev libssl-dev libldap2-dev libzip-dev
 
-#Descargamos y configuramos wkhtmltopdf
+#wkhtmltopdf
 RUN set -x; \
 	cd /tmp \
 	wget -O wkhtmltox.tar.xz https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz \

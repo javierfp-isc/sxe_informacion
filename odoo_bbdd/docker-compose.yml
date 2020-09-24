@@ -1,12 +1,36 @@
 version: '3'
 services:
-#Service odoo toma el Dockerfile de ./odoo
+#Service odoo
  odoo:
   build: ./odoo
   hostname: odoo
+  depends_on:
+  - postgres
   ports:
   - "8069:8069"
-  - "5432:5432"
   #Mapeo del directorio de la MV en el container
   volumes:
   - /root/odoo/src:/opt/odoo/src
+  networks:
+   odoo_bbdd:
+    ipv4_address: 192.168.203.13
+#Service postgres
+ postgres:
+  build: ./postgres
+  hostname: postgres
+  ports:
+  - "5432:5432"
+  - "8080:80"
+  volumes:
+  - pg_data:/var/lib/postgresql/11/main
+  networks:
+   odoo_bbdd:
+    ipv4_address: 192.168.203.10
+volumes:
+  pg_data:
+networks:
+  odoo_bbdd:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.168.203.0/24
