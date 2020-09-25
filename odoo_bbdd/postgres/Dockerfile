@@ -5,7 +5,7 @@ MAINTAINER javierfp <javierfp@iessanclemente.net>
 ENV TERM xterm
 ENV PASS=abc123.
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV NETWORK=192.168.199.0/24
+ENV NETWORK=192.168.203.0/24
 
 LABEL distribucion="Debian 10"
 LABEL descripcion="Imagen Postgres base Odoo 13  para prácticas"
@@ -44,6 +44,7 @@ RUN set -x; \
 RUN set -x; \
 	apt install -y curl ca-certificates gnupg && \
 	curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+	echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
 	apt update && apt install -y pgadmin4  pgadmin4-apache2
 
 #Limpiando
