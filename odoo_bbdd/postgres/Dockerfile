@@ -35,6 +35,10 @@ RUN set -x; \
 RUN set -x; \
 	apt install -y postgresql
 
+#Instalamos apache2 para pgadmin4
+RUN set -x; \
+	apt install -y apache2
+
 #Configuramos acceso a postgresql
 RUN set -x; \
 	echo "listen_addresses = '*'" >> /etc/postgresql/11/main/postgresql.conf && \
