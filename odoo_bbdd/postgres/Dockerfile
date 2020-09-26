@@ -40,13 +40,6 @@ RUN set -x; \
 	echo "listen_addresses = '*'" >> /etc/postgresql/11/main/postgresql.conf && \
 	echo "host all all $NETWORK md5" >> /etc/postgresql/11/main/pg_hba.conf
 
-#Instalacion de pgadmin4
-RUN set -x; \
-	apt install -y curl ca-certificates gnupg && \
-	curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
-	echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
-	apt update && apt install -y pgadmin4  pgadmin4-apache2
-
 #Limpiando
 RUN set -x; \
 	apt clean
