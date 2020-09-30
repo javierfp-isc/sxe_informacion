@@ -52,11 +52,8 @@ RUN set -x; \
 #wkhtmltopdf
 RUN set -x; \
 	cd /tmp \
-	wget -O wkhtmltox.tar.xz https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz \
-	tar xvf ./wkhtmltox.tar.xz \
-	mv wkhtmltox/lib/* /usr/local/lib \
-	mv wkhtmltox/bin/* /usr/local/bin \
-	mv wkhtmltox/share/man/man1 /usr/local/share/man
+	wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb -O wkhtmltox_0.12.5-1.buster_amd64.deb \
+	apt install -y /tmp/wkhtmltox_0.12.5-1.buster_amd64.deb
 
 #Descargando archivo requirements para odoo
 RUN set -x; \
