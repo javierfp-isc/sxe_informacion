@@ -16,6 +16,6 @@ El escenario es el conjunto de elementos necesarios para la realización de la p
 
 Este repositorio contiene los escenarios:
 
-- **odoo_bbdd**: despliegue completo de odoo en 1 container
+- **odoo_bbdd**: despliegue completo de odoo en 2 container
 - **odoo_backups**: despliegue completo de odoo en 1 container
 
