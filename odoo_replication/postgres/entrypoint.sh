@@ -13,7 +13,7 @@ service ssh start
 if [ $ROLE = STANDBY ]
 then
 	mv /var/lib/postgresql/11/main/ /var/lib/postgresql/11/main.bak
-	pg_basebackup -h 192.168.204.10 -U replicator -D /var/lib/postgresql/11/main/ -P --$ODOOPASS --slot replicator
+	pg_basebackup -h 192.168.204.10 -U replicator -D /var/lib/postgresql/11/main/ -P --password --slot replicator
 	chown -R postgres:postgres /var/lib/postgresql/11/main
 	sed -i "s/#hot_standby = on/hot_standby = on/" /etc/postgresql/11/main/postgresql.conf
 	echo "standby_mode = 'on'" > /var/lib/postgresql/11/main/recovery.conf
