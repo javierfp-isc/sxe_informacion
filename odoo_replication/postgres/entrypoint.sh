@@ -15,7 +15,7 @@ if [ $ROLE = MASTER ]
 then
 	su - postgres -c "psql -c \"CREATE ROLE replicator LOGIN REPLICATION ENCRYPTED PASSWORD '$ODOOPASS'\""
 	su - postgres -c "psql -c \"SELECT * FROM pg_create_physical_replication_slot('replicator')\""
-	echo "host replication replicator 192.168.204.20/32 md5" > /etc/postgresql/11/main/pg_hba.conf
+	echo "host replication replicator 192.168.204.20/32 md5" >> /etc/postgresql/11/main/pg_hba.conf
 	service postgresql restart
 fi
 
