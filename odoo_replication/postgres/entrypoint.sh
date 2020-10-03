@@ -22,7 +22,9 @@ fi
 #Ejecutamos en el STANDBY
 if [ $ROLE = STANDBY ]
 then
-	service postgresql stop && mv /var/lib/postgresql/11/main/ /var/lib/postgresql/11/main.bak
+	service postgresql stop
+	sleep 5
+	mv /var/lib/postgresql/11/main/ /var/lib/postgresql/11/main.bak
 	pg_basebackup -h 192.168.204.10 -U replicator -D /var/lib/postgresql/11/main/ -P --$ODOOPASS --slot replicator
 	chown -R postgres:postgres /var/lib/postgresql/11/main
 	sed -i "s/#hot_standby = on/hot_standby = on/" /etc/postgresql/11/main/postgresql.conf
