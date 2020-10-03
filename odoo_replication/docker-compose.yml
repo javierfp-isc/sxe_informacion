@@ -38,8 +38,6 @@ services:
   hostname: postgres
   environment:
   - ROLE=MASTER
-  volumes:
-  - pg_data:/var/lib/postgresql/11/main
   networks:
    odoo_replication:
     ipv4_address: 192.168.204.10
@@ -49,14 +47,9 @@ services:
   hostname: postgresb
   environment:
   - ROLE=STANDBY
-  volumes:
-  - pgb_data:/var/lib/postgresql/11/main
   networks:
    odoo_replication:
     ipv4_address: 192.168.204.20
-volumes:
-  pg_data:
-  pgb_data:
 networks:
   odoo_replication:
     driver: bridge
