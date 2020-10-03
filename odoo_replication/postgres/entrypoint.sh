@@ -29,7 +29,7 @@ service postgresql start
 #Ejecutamos en el MASTER
 if [ $ROLE = MASTER ]
 then
-	REPLICATOR = $(su - postgres -c "psql -c \"SELECT rolname FROM pg_catalog.pg_roles WHERE rolname = 'replicator'\"")
+	REPLICATOR=$(su - postgres -c "psql -c \"SELECT rolname FROM pg_catalog.pg_roles WHERE rolname = 'replicator'\"")
 	if [ ! $REPLICATOR ]
 	then
 		su - postgres -c "psql -c \"CREATE ROLE replicator LOGIN REPLICATION ENCRYPTED PASSWORD '$ODOOPASS'\""
