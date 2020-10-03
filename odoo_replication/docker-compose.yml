@@ -1,0 +1,65 @@
+version: '3'
+services:
+#Service odoo
+ odoo:
+  build: ./odoo
+  hostname: odoo
+  environment:
+  - DBHOST=postgres
+  depends_on:
+  - postgres
+  ports:
+  - "8069:8069"
+  #Mapeo del directorio de la MV en el container
+  volumes:
+  - /root/odoo/src:/opt/odoo/src
+  networks:
+   odoo_replication:
+    ipv4_address: 192.168.204.13
+#Service odoob
+ odoob:
+  build: ./odoo
+  hostname: odoob
+  environment:
+  - DBHOST=postgresb
+  depends_on:
+  - postgresb
+  ports:
+  - "8070:8069"
+  #Mapeo del directorio de la MV en el container
+  volumes:
+  - /root/odoo/src:/opt/odoo/src
+  networks:
+   odoo_replication:
+    ipv4_address: 192.168.204.14
+#Service postgres
+ postgres:
+  build: ./postgres
+  hostname: postgres
+  environment:
+  - ROLE=MASTER
+  volumes:
+  - pg_data:/var/lib/postgresql/11/main
+  networks:
+   odoo_replication:
+    ipv4_address: 192.168.204.10
+#Service postgresb
+ postgresb:
+  build: ./postgres
+  hostname: postgresb
+  environment:
+  - ROLE=STANDBY
+  volumes:
+  - pgb_data:/var/lib/postgresql/11/main
+  networks:
+   odoo_replication:
+    ipv4_address: 192.168.204.20
+volumes:
+  pg_data:
+  pgb_data:
+networks:
+  odoo_replication:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.168.204.0/24
