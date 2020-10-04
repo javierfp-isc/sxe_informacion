@@ -41,10 +41,8 @@ services:
     ipv4_address: 192.168.204.10
 #Service postgresb
  postgresb:
-  build: ./postgresb
+  build: ./postgres
   hostname: postgresb
-  depends_on:
-  - postgres
   networks:
    odoo_replication:
     ipv4_address: 192.168.204.20
