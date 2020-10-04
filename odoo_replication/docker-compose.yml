@@ -36,17 +36,13 @@ services:
  postgres:
   build: ./postgres
   hostname: postgres
-  environment:
-  - ROLE=MASTER
   networks:
    odoo_replication:
     ipv4_address: 192.168.204.10
 #Service postgresb
  postgresb:
-  build: ./postgres
+  build: ./postgresb
   hostname: postgresb
-  environment:
-  - ROLE=STANDBY
   depends_on:
   - postgres
   networks:
