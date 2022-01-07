@@ -1,6 +1,6 @@
-FROM javierfpisc/odoo:v13conpostgres
+FROM javierfpisc/odoo:v14conpostgres
 
-MAINTAINER javierfp <javierfp@iessanclemente.net>
+LABEL MAINTAINER=javierfp@iessanclemente.net
 
 #Copiamos el entrypoint.sh al container
 COPY entrypoint.sh /usr/bin/entrypoint.sh

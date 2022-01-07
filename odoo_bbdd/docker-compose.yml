@@ -10,7 +10,7 @@ services:
   - "8069:8069"
   #Mapeo del directorio de la MV en el container
   volumes:
-  - /root/odoo/src:/opt/odoo/src
+  - ~/odoo/src:/opt/odoo/src
   networks:
    odoo_bbdd:
     ipv4_address: 192.168.203.13

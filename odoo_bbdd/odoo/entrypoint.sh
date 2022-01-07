@@ -1,11 +1,16 @@
 #!/bin/bash
+OCBDIR=OCB
 
 #Arrancamos servicios
 service ssh start
 
 #Creamos el archivo de log y cambiamos propietario
+mkdir /var/log/odoo
 touch /var/log/odoo/odoo.log
-chown odoo /var/log/odoo/odoo.log
+chown odoo:odoo /var/log/odoo/odoo.log
+
+#Sustituimos las variables de entorno en el odoo.sh
+sed -i "s/OCBDIR/$OCBDIR/" /etc/init.d/odoo.sh
 
 #Arranca odoo (while: la primera vez no arranca bien)
 while [[ ! $(service odoo.sh start) ]];do continue;done
