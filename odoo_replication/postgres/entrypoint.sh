@@ -1,13 +1,10 @@
 #!/bin/bash
-
-#Sale si un comando termina con un valor de retorno diferente a 0
-set -e
-
 ODOOUSER=odoo
 ODOOPASS=abc123.
 
-#Arrancamos servicios
-service ssh start
+#Habilitar acceso desde host remotos
+[[ $(grep "^host all all 0.0.0.0/0 md5" /etc/postgresql/11/main/pg_hba.conf) ]] || echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/11/main/pg_hba.conf
+[[ $(grep "^listen_addresses='*'" /etc/postgresql/11/main/postgresql.conf) ]] || echo "listen_addresses='*'" >> /etc/postgresql/11/main/postgresql.conf
 
 #Arrancamos postgres
 service postgresql start

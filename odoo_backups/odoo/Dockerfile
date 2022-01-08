@@ -6,8 +6,7 @@ LABEL MAINTAINER=javierfp@iessanclemente.net
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 
 #Damos permiso al entrypoint
-RUN set -x; \
-	chmod +x /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
 
 #Copiamos el archivo odoo.conf
 COPY odoo.conf /opt/odoo/odoo.conf
