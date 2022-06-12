@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 
 #Copiamos el entrypoint.sh al container
 COPY entrypoint.sh /usr/bin/entrypoint.sh

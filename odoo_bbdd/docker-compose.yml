@@ -19,10 +19,10 @@ services:
   build: ./postgres
   hostname: postgres
   ports:
-  - "5432:5432"
+  - "15432:5432"
   - "8080:80"
   volumes:
-  - pg_data:/var/lib/postgresql/11/main
+  - pg_data:/var/lib/postgresql/13/main
   networks:
    odoo_bbdd:
     ipv4_address: 192.168.203.10
