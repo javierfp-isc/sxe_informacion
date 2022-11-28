@@ -11,5 +11,8 @@ RUN chmod +x /usr/bin/entrypoint.sh
 #Copiamos el archivo odoo.conf
 COPY odoo.conf /opt/odoo/odoo.conf
 
+#Damos permiso de lectura al archivo
+RUN chmod +r /opt/odoo/odoo.conf
+
 #Comando para arrancar ssh y entrar en bucle de espera
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
