@@ -1,4 +1,5 @@
 FROM debian:bullseye
+ENV PGDATA="/var/lib/postgresql/13/main"
 
 #Copiamos el entrypoint.sh al container
 COPY entrypoint.sh /usr/bin/entrypoint.sh
