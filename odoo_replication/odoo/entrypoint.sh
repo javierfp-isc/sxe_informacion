@@ -1,5 +1,5 @@
 #!/bin/bash
-OCBDIR=OCB
+OCBDIR=OCB16
 
 #Sustituimos las variables de entorno en el odoo.sh
 sed -i "s/OCBDIR/$OCBDIR/" /etc/init.d/odoo.sh
