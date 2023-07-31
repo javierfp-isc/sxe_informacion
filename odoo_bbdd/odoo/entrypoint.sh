@@ -1,5 +1,5 @@
 #!/bin/bash
-OCBDIR=OCB16
+OCBDIR=OCB
 
 #Creamos el archivo de log y cambiamos propietario
 mkdir /var/log/odoo

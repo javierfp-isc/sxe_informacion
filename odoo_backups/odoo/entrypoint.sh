@@ -1,7 +1,7 @@
 #!/bin/bash
 ODOOUSER=odoo
 ODOOPASS=abc123.
-OCBDIR=OCB16
+OCBDIR=OCB
 
 #Arrancamos servicios
 service postgresql start
