@@ -1,5 +1,5 @@
-FROM debian:bullseye
-ENV PGDATA="/var/lib/postgresql/13/main"
+FROM debian:12
+ENV PGDATA="/var/lib/postgresql/15/main"
 
 #Copiamos el entrypoint.sh al container
 COPY entrypoint.sh /usr/bin/entrypoint.sh
@@ -8,7 +8,7 @@ COPY entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 
 #Instalamos apache2 para pgadmin4
-RUN apt update && apt install -y apache2 postgresql postgresql-client vim
+RUN apt update && apt install -y apache2 postgresql postgresql-client vim && apt clean
 
 #Comando para arrancar ssh y entrar en bucle de espera
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]

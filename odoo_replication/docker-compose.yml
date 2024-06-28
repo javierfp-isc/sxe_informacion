@@ -21,7 +21,7 @@ services:
   build: ./postgres
   hostname: postgres
   volumes:
-  - pg_conf:/etc/postgresql/13/main
+  - pg_conf:/etc/postgresql/15/main
   networks:
    odoo_replication:
     ipv4_address: 192.168.204.10
@@ -30,7 +30,7 @@ services:
   build: ./postgres
   hostname: postgresb
   volumes:
-  - pgb_conf:/etc/postgresql/13/main
+  - pgb_conf:/etc/postgresql/15/main
   networks:
    odoo_replication:
     ipv4_address: 192.168.204.20
