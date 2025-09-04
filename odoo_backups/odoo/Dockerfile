@@ -1,4 +1,4 @@
-FROM javierfpisc/odoo:v17conpostgres
+FROM javierfpisc/odoo:v18conpostgres
 
 LABEL MAINTAINER=javierfp@iessanclemente.net
 
