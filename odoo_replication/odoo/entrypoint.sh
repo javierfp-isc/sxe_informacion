@@ -9,8 +9,8 @@ mkdir /var/log/odoo
 touch /var/log/odoo/odoo.log
 chown odoo:odoo /var/log/odoo/odoo.log
 
-#Cambiamos propietario del directorio de odoo
-[ $(stat -c "%G" $LOCALFS) == "odoo" ] || chown -R odoo:odoo /opt/odoo
+#Cambiamos propietario del directorio filestore de odoo
+[ $(stat -c "%G" $LOCALFS) == "odoo" ] || chown -R odoo:odoo /opt/odoo/.local
 
 #Arranca odoo (while: la primera vez no arranca bien)
 while [[ ! $(service odoo.sh start) ]];do continue;done
