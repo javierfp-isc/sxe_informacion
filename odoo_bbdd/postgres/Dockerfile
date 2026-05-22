@@ -1,4 +1,4 @@
-FROM debian:12
+FROM debian:13
 
 #Copiamos el entrypoint.sh al container
 COPY entrypoint.sh /usr/bin/entrypoint.sh
