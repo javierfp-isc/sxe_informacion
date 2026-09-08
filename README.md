@@ -8,5 +8,4 @@ Con este repositorio se dispondrá de varios escenarios para practicar el acceso
 Este repositorio contiene los escenarios:
 
 - **odoo-bbdd**
-- **odoo-backups**
 
