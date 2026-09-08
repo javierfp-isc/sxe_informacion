@@ -1,0 +1,53 @@
+services:
+  odoo:
+    image: odoo:19-auto 
+    container_name: odoo-bbdd
+    hostname: odoo
+    command:
+      - /bin/sh
+      - -c
+      - |
+          chown -R odoo:odoo /opt/odoo/.local/share/Odoo
+          chown odoo:odoo /opt/odoo/backups
+          /etc/init.d/odoo.sh start
+          exec bash -c 'while true; do sleep 3600; done'
+    volumes:
+      - ~/odoo/src:/opt/odoo/src
+      - odoo_fs:/opt/odoo/.local/share/Odoo/filestore
+      - odoo_backups:/opt/odoo/backups
+    ports:
+      - "8069:8069"
+      - "8072:8072"
+  postgres:
+    image: odoo-postgres:17
+    container_name: odoo-bbdd-postgres-auto
+    hostname: odoo-postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: abc123.
+    ports:
+      - "15432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: odoo-bbdd-pgadmin
+    hostname: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@localhost.com
+      PGADMIN_DEFAULT_PASSWORD: abc123.
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  odoo_fs:
+  pgadmin_data:
+  odoo_backups:
